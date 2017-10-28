@@ -32,6 +32,6 @@ export class InputControlService {
       }
     }
 
-    return mappedInputs;
+    return mappedInputs.sort((a, b) => a.order - b.order);
   }
 }

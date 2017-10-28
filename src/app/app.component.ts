@@ -36,7 +36,7 @@ export class AppComponent {
         label: 'First name',
         value: 'Bombasto',
         required: false,
-        order: 1
+        order: 2
       },
 
       {
@@ -44,7 +44,7 @@ export class AppComponent {
         id: 'emailAddress',
         label: 'Email',
         type: 'email',
-        order: 2,
+        order: 5,
         required: true,
       }
     ];
