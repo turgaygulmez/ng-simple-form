@@ -4,12 +4,12 @@ import { InputBase }              from './inputs/input-base';
 import { InputControlService }    from './services/input-control.service';
 
 @Component({
-  selector: 'dynamic-form',
-  templateUrl: './dynamic-form.component.html',
+  selector: 'simple-form',
+  templateUrl: './simple-form.component.html',
   providers: [ InputControlService ]
 })
 
-export class DynamicFormComponent implements OnInit {
+export class SimpleFormComponent implements OnInit {
 
   @Input() inputs: any[] = [];
   mappedInputs: InputBase<any>[] = [];

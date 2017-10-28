@@ -5,7 +5,7 @@ import { Component }       from '@angular/core';
   template: `
     <div>
       <h2>Job Application for Heroes</h2>
-      <dynamic-form [inputs]="inputs"></dynamic-form>
+      <simple-form [inputs]="inputs"></simple-form>
     </div>
   `,
   providers:  []

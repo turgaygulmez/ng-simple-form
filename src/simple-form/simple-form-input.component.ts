@@ -5,9 +5,9 @@ import { InputBase }     from './inputs/input-base';
 
 @Component({
   selector: 'df-input',
-  templateUrl: './dynamic-form-input.component.html'
+  templateUrl: './simple-form-input.component.html'
 })
-export class DynamicFormInputComponent {
+export class SimpleFormInputComponent {
   @Input() input: InputBase<any>;
   @Input() form: FormGroup;
   get isValid() {
