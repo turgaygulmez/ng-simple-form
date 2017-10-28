@@ -1,7 +1,8 @@
 import { InputBase } from './input-base';
+import { InputTypes }	from '../inputs/inputs';
 
 export class InputTextbox extends InputBase<string> {
-  controlType = 'textbox';
+  controlType = InputTypes.Textbox;
   type: string;
 
   constructor(options: {} = {}) {

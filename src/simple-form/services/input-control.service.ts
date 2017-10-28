@@ -1,13 +1,12 @@
-import { Injectable }   from '@angular/core';
+import { Injectable }                         from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-import { InputBase } from '../inputs/input-base';
-import { InputDropdown }          from '../inputs/input-dropdown';
-import { InputTextbox }           from '../inputs/input-textbox';
+import { InputBase }                          from '../inputs/input-base';
+import { InputDropdown }                      from '../inputs/input-dropdown';
+import { InputTextbox }                       from '../inputs/input-textbox';
+import { InputTypes }                         from '../inputs/inputs';
 
 @Injectable()
 export class InputControlService {
-  constructor() { }
 
   toFormGroup(inputs: InputBase<any>[] ) {
     let group: any = {};
@@ -23,10 +22,13 @@ export class InputControlService {
     let mappedInputs: InputBase<any>[] = [];
 
     for(let k = 0; k < inputs.length; k++) {
-      if (inputs[k].inputType === 'dropdown') {
-        mappedInputs.push(new InputDropdown(inputs[k]));
-      } else if (inputs[k].inputType === 'textbox') {
-        mappedInputs.push(new InputTextbox(inputs[k]));
+      switch(inputs[k].inputType) {
+        case InputTypes.Dropdown:
+          mappedInputs.push(new InputDropdown(inputs[k]));
+          break;
+        case InputTypes.Textbox:
+          mappedInputs.push(new InputTextbox(inputs[k]));
+          break;
       }
     }
 

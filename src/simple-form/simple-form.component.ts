@@ -3,18 +3,18 @@ import { FormGroup }                 from '@angular/forms';
 import { InputBase }              from './inputs/input-base';
 import { InputControlService }    from './services/input-control.service';
 
+
 @Component({
   selector: 'simple-form',
   templateUrl: './simple-form.component.html',
-  providers: [ InputControlService ]
+  providers: [ InputControlService]
 })
-
+    
 export class SimpleFormComponent implements OnInit {
 
   @Input() inputs: any[] = [];
   mappedInputs: InputBase<any>[] = [];
   form: FormGroup;
-  payLoad = '';
 
   constructor(private ics: InputControlService) {  }
 
@@ -24,7 +24,7 @@ export class SimpleFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.payLoad = JSON.stringify(this.form.value);
+    console.log(JSON.stringify(this.form.value));
   }
 }
 

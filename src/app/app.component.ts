@@ -1,11 +1,13 @@
-import { Component }       from '@angular/core';
+import { Component }  from '@angular/core';
+import { InputTypes } from '../simple-form/inputs/inputs';
 
 @Component({
   selector: 'my-app',
   template: `
     <div>
-      <h2>Job Application for Heroes</h2>
-      <simple-form [inputs]="inputs"></simple-form>
+      <div class="contant-form">
+        <simple-form  [inputs]="inputs"></simple-form>
+      </div>
     </div>
   `,
   providers:  []
@@ -17,7 +19,7 @@ export class AppComponent {
   constructor() {
     this.inputs = [
        {
-        inputType: 'dropdown',
+        inputType: InputTypes.Dropdown,
         id: 'brave',
         label: 'Bravery Rating',
         options: [
@@ -33,7 +35,7 @@ export class AppComponent {
         id: 'firstName',
         label: 'First name',
         value: 'Bombasto',
-        required: true,
+        required: false,
         order: 1
       },
 

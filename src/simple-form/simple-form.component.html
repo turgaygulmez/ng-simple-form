@@ -1,16 +1,11 @@
-<div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+<div class="col-sm-6 col-sm-offset-3">
+	<h2>Simple form generator</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" >
 
-    <div *ngFor="let input of mappedInputs" class="form-row">
+    <div *ngFor="let input of mappedInputs">
       <df-input [input]="input" [form]="form"></df-input>
     </div>
 
-    <div class="form-row">
-      <button type="submit" [disabled]="!form.valid">Save</button>
-    </div>
+    <button class="btn btn-success" type="submit" [disabled]="!form.valid">Save</button>
   </form>
-
-  <div *ngIf="payLoad" class="form-row">
-    <strong>Saved the following values</strong><br>{{payLoad}}
-  </div>
 </div>

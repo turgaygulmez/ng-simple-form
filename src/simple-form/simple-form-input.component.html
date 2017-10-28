@@ -1,16 +1,15 @@
-<div [formGroup]="form" [ngClass]="{'invalid': !isValid}">
-  <label [attr.for]="input.id">{{input.label}}</label>
+<div class="form-group" [formGroup]="form" [ngClass]="{'invalid': !isValid}">
+	<label [attr.for]="input.id">{{input.label}}</label>
 
-  <div [ngSwitch]="input.controlType">
+	<div [ngSwitch]="input.controlType">
+		<input class="form-control" *ngSwitchCase="'textbox'" [formControlName]="input.id"
+			[id]="input.id" [type]="input.type">
 
-    <input *ngSwitchCase="'textbox'" [formControlName]="input.id"
-            [id]="input.id" [type]="input.type">
+		<select class="form-control" [id]="input.id" *ngSwitchCase="'dropdown'" [formControlName]="input.id">
+			<option *ngFor="let opt of input.options" [value]="opt.id">{{opt.value}}</option>
+		</select>
 
-    <select [id]="input.id" *ngSwitchCase="'dropdown'" [formControlName]="input.id">
-      <option *ngFor="let opt of input.options" [value]="opt.id">{{opt.value}}</option>
-    </select>
+	</div>
 
-  </div>
-
-  <div class="errorMessage" *ngIf="!isValid">{{input.label}} is required</div>
+	<div class="alert alert-danger" *ngIf="!isValid">{{input.label}} is required</div>
 </div>
