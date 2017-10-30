@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup }        from '@angular/forms';
-import { InputBase }     	from './inputs/input-base';
-import { InputTypes }       from './inputs/inputs';
+import { InputBase }     	from '../inputs/input-base';
+import { InputTypes }       from '../inputs/input-types';
 
 @Component({
   selector: 'df-input',

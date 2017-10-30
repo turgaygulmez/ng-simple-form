@@ -1,4 +1,4 @@
-import { InputTypes } from '../inputs/inputs';
+import { InputTypes } from '../inputs/input-types';
 
 export class InputBase<T>{
   value: T;

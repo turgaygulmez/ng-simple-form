@@ -1,5 +1,4 @@
 import { Component }  from '@angular/core';
-import { InputTypes } from '../simple-form/inputs/inputs';
 
 @Component({
   selector: 'my-app',
@@ -19,14 +18,14 @@ export class AppComponent {
   constructor() {
     this.inputs = [
        {
-        inputType: InputTypes.Dropdown,
-        id: 'brave',
-        label: 'Bravery Rating',
+        inputType: 'dropdown',
+        id: 'departments',
+        label: 'Departments',
         options: [
-          {id: 'solid',  value: 'Solid'},
-          {id: 'great',  value: 'Great'},
-          {id: 'good',   value: 'Good'},
-          {id: 'unproven', value: 'Unproven'}
+          {id: 'dept-1', value: 'HR'},
+          {id: 'dept-2', value: 'IT'},
+          {id: 'dept-3', value: 'Sales'},
+          {id: 'dept-4', value: 'Service'}
         ],
         order: 3
       },
@@ -34,9 +33,9 @@ export class AppComponent {
         inputType: 'textbox',
         id: 'firstName',
         label: 'First name',
-        value: 'Bombasto',
+        value: 'David',
         required: false,
-        order: 2
+        order: 1
       },
 
       {
@@ -44,7 +43,7 @@ export class AppComponent {
         id: 'emailAddress',
         label: 'Email',
         type: 'email',
-        order: 5,
+        order: 2,
         required: true,
       }
     ];

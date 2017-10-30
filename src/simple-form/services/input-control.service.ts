@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputBase }                          from '../inputs/input-base';
 import { InputDropdown }                      from '../inputs/input-dropdown';
 import { InputTextbox }                       from '../inputs/input-textbox';
-import { InputTypes }                         from '../inputs/inputs';
+import { InputTypes }                         from '../inputs/input-types';
 
 @Injectable()
 export class InputControlService {
