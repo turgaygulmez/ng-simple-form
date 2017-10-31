@@ -24,6 +24,6 @@ export class SimpleFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(JSON.stringify(this.form.value));
+    this.formBase.submit(this.form.value);
   }
 }

@@ -18,6 +18,10 @@ export class AppComponent {
   constructor() {
     this.formMetaData = {
       title: 'My simple form',
+      submitText: 'Save',
+      submit: function (value) {
+        console.log('callback from app component turgay' + JSON.stringify(value));
+      },
       inputs: [
        {
         tag: 'dropdown',
