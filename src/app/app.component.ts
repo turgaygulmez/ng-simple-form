@@ -5,7 +5,7 @@ import { Component }  from '@angular/core';
   template: `
     <div>
       <div class="contant-form">
-        <simple-form  [inputs]="inputs"></simple-form>
+        <simple-form  [metadata]="formMetaData"></simple-form>
       </div>
     </div>
   `,
@@ -13,12 +13,14 @@ import { Component }  from '@angular/core';
 })
 
 export class AppComponent {
-  inputs: any[];
+  formMetaData: any = {};
 
   constructor() {
-    this.inputs = [
+    this.formMetaData = {
+      title: 'My simple form',
+      inputs: [
        {
-        inputType: 'dropdown',
+        tag: 'dropdown',
         id: 'departments',
         label: 'Departments',
         options: [
@@ -30,7 +32,7 @@ export class AppComponent {
         order: 3
       },
       {
-        inputType: 'textbox',
+        tag: 'textbox',
         id: 'firstName',
         label: 'First name',
         value: 'David',
@@ -39,13 +41,13 @@ export class AppComponent {
       },
 
       {
-        inputType: 'textbox',
+        tag: 'textbox',
         id: 'emailAddress',
         label: 'Email',
         type: 'email',
-        order: 2,
+        order: 7,
         required: true,
       }
-    ];
+    ]};
   }
 }

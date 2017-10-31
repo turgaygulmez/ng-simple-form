@@ -1,12 +1,13 @@
 import { Injectable }                         from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputBase }                          from '../inputs/input-base';
+import { FormBase }                           from '../inputs/form-base';
 import { InputDropdown }                      from '../inputs/input-dropdown';
 import { InputTextbox }                       from '../inputs/input-textbox';
 import { InputTypes }                         from '../inputs/input-types';
 
 @Injectable()
-export class InputControlService {
+export class FormDataService {
 
   toFormGroup(inputs: InputBase<any>[] ) {
     let group: any = {};
@@ -18,20 +19,24 @@ export class InputControlService {
     return new FormGroup(group);
   }
 
-  toMappedInputs(inputs: any[]) {
+  toFormBase(metadata: any) {
     let mappedInputs: InputBase<any>[] = [];
 
-    for(let k = 0; k < inputs.length; k++) {
-      switch(inputs[k].inputType) {
-        case InputTypes.Dropdown:
-          mappedInputs.push(new InputDropdown(inputs[k]));
-          break;
-        case InputTypes.Textbox:
-          mappedInputs.push(new InputTextbox(inputs[k]));
-          break;
-      }
+    for(let k = 0; k < metadata.inputs.length; k++) {
+      mappedInputs.push(this.getInput(metadata.inputs[k]));
     }
 
-    return mappedInputs.sort((a, b) => a.order - b.order);
+    metadata.inputs = mappedInputs.sort((a, b) => a.order - b.order);
+
+    return new FormBase(metadata);
+  }
+
+  private getInput (input: any) {
+      switch (input.tag) {
+        case InputTypes.Dropdown:
+          return new InputDropdown(input);
+        case InputTypes.Textbox:
+          return new InputTextbox(input);
+      }
   }
 }

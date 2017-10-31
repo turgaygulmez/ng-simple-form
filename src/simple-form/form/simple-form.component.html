@@ -1,8 +1,8 @@
 <div class="col-sm-6 col-sm-offset-3">
-  <h2>Simple form generator</h2>
+  <h2>{{formBase.title}}</h2>
   <form (ngSubmit)="onSubmit()" [formGroup]="form" >
 
-    <div *ngFor="let input of mappedInputs">
+    <div *ngFor="let input of formBase.inputs">
       <df-input [input]="input" [form]="form"></df-input>
     </div>
 
