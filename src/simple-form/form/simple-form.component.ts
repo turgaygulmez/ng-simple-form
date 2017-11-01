@@ -6,6 +6,7 @@ import { FormDataService }           from '../services/form-data.service';
 @Component({
   selector: 'simple-form',
   templateUrl: './simple-form.component.html',
+  styleUrls: ['./simple-form.component.css'],
   providers: [ FormDataService]
 })
 

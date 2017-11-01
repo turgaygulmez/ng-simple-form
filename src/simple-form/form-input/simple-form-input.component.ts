@@ -12,6 +12,7 @@ import {
 @Component({
   selector: 'df-input',
   templateUrl: './simple-form-input.component.html',
+  styleUrls: ['./simple-form-input.component.css'],
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [
@@ -23,7 +24,6 @@ import {
       ])
     ])
   ]
-
 })
 
 export class SimpleFormInputComponent {
