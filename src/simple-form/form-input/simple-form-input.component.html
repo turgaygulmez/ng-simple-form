@@ -14,5 +14,5 @@
         </div>
 	</div>
 
-	<div class="alert alert-danger" *ngIf="!isValid">{{input.label}} {{errorMessage}}</div>
+	<div class="alert alert-danger" [@fadeInOut] *ngIf="!isValid">{{input.label}} {{errorMessage}}</div>
 </div>

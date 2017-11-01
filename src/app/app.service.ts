@@ -9,7 +9,7 @@ export class FormService {
       title: 'My simple form',
       submitText: 'Save',
       submit: function (value) {
-        console.log('callback from app component turgay' + JSON.stringify(value));
+        console.log('callback from app component ' + JSON.stringify(value));
       },
       inputs: [
        {

@@ -1,10 +1,10 @@
-import { Injectable }                         from '@angular/core';
+import { Injectable }                          from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import { InputBase }                          from '../inputs/input-base';
-import { FormBase }                           from '../inputs/form-base';
-import { InputDropdown }                      from '../inputs/input-dropdown';
-import { InputTextbox }                       from '../inputs/input-textbox';
-import { InputTypes }                         from '../inputs/input-types';
+import { InputBase }                           from '../inputs/input-base';
+import { FormBase }                            from '../inputs/form-base';
+import { InputDropdown }                       from '../inputs/input-dropdown';
+import { InputTextbox }                        from '../inputs/input-textbox';
+import { InputTypes }                          from '../inputs/input-types';
 
 @Injectable()
 export class FormDataService {
