@@ -3,7 +3,6 @@ import { FormGroup }                 from '@angular/forms';
 import { FormBase }                  from '../inputs/form-base';
 import { FormDataService }           from '../services/form-data.service';
 
-
 @Component({
   selector: 'simple-form',
   templateUrl: './simple-form.component.html',

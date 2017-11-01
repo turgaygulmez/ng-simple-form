@@ -10,8 +10,20 @@ import { InputTypes }       from '../inputs/input-types';
 export class SimpleFormInputComponent {
   @Input() input: InputBase<any>;
   @Input() form: FormGroup;
+  errorMessage:string = '';
 
   get isValid() {
-    return this.form.controls[this.input.id].valid;
+  	if (this.form.controls[this.input.id].status === 'VALID') {
+  		return true;
+  	}
+    
+    let control = this.form.controls[this.input.id];
+  	let errors = control.errors;
+  	let errorName = Object.keys(errors)[0];
+
+    this.errorMessage = control['validations'][errorName] !== undefined ? control['validations'][errorName].message :
+      'undefined error message';
+
+    return false;
   }
 }

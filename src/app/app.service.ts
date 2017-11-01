@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Validators } from '@angular/forms';
 
 @Injectable()
 export class FormService {
@@ -28,17 +29,24 @@ export class FormService {
         id: 'firstName',
         label: 'First name',
         value: 'David',
-        required: false,
         order: 1
       },
-
       {
         tag: 'textbox',
         id: 'emailAddress',
         label: 'Email',
         type: 'email',
         order: 7,
-        required: true,
+        validations: {
+          required: {
+            message: 'must be filled',
+            validate: Validators.required
+          },
+          minlength: {
+            message: 'must be 4 chars',
+            validate: Validators.minLength(4)
+          }
+        }
       }
     ]};
   }

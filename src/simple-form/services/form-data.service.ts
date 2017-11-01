@@ -1,5 +1,5 @@
 import { Injectable }                         from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { InputBase }                          from '../inputs/input-base';
 import { FormBase }                           from '../inputs/form-base';
 import { InputDropdown }                      from '../inputs/input-dropdown';
@@ -11,11 +11,22 @@ export class FormDataService {
 
   toFormGroup(inputs: InputBase<any>[] ) {
     let group: any = {};
+    let validationArray: ValidatorFn[] = [];
+    // extend FormControl with validations property to access custom validation messages
+    FormControl.prototype['validations'] = null;
 
     inputs.forEach(input => {
-      group[input.id] = input.required ? new FormControl(input.value || '', Validators.required)
-                                              : new FormControl(input.value || '');
+      if (input.validations !== null) {
+        Object.keys(input.validations).forEach(validation => {
+          validationArray.push(input.validations[validation].validate);
+        });
+        group[input.id] = new FormControl(input.value || '', validationArray);
+        group[input.id].validations = input.validations;
+      } else {
+        group[input.id] = new FormControl(input.value || '');
+      }
     });
+
     return new FormGroup(group);
   }
 
