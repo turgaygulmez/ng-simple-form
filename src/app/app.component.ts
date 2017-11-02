@@ -5,7 +5,7 @@ import { FormService } from './app.service';
   selector: 'my-app',
   template: `
     <div>
-      <div class="contant-form">
+      <div class="col-sm-6 col-sm-offset-3">
         <simple-form  [metadata]="formMetaData"></simple-form>
       </div>
     </div>
