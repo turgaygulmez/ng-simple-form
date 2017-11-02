@@ -24,6 +24,64 @@ Development
 -----------
 * Run: `ng serve --open`.
 
+Module meta-data
+-----------
+
+```ts
+{
+  title: 'My simple form',
+  submitText: 'Save',
+  submit: function (form) {
+    console.log('callback from app component ' + JSON.stringify(form.value));
+  },
+  controls: [
+    {
+      tag: 'dropdown',
+      id: 'source',
+      label: 'How did you find us?',
+      options: [
+        {id: 'src-internet', value: 'Internet'},
+        {id: 'src-newspaper', value: 'Newspaper'},
+        {id: 'src-friend', value: 'Friend'}
+      ],
+      order: 3
+    },
+    {
+      tag: 'input',
+      id: 'emailAddress',
+      label: 'Email',
+      type: 'email',
+      order: 4,
+      validations: {
+        required: {
+          message: 'must be filled',
+          validate: Validators.required
+        },
+        email: {
+          message: 'not a valid mail address',
+          validate: Validators.email
+        }
+      }
+    }
+  ]
+};
+```
+| Property                  | Description                                               |
+| --------------------------| ----------------------------------------------------------|
+| title                     | Title of the form with <h2> tag                           |
+| submitText                | submit button text                                        |
+| submit                    | submit callback function                                  |
+| controls                  | list of controller will be shown in the form              |
+| controls[0].tag           | form controller type (dropdown, input, textarea)          |
+| controls[0].value         | default value of the form controller                      |
+| controls[0].id            | form controller id                                        |
+| controls[0].label         | form controller label for description                     |
+| controls[0].type          | input tag type                                            |
+| controls[0].order         | form controller order in the form                         |
+| controls[0].options       | list of options for select tag ({id, value})              |
+| controls[0].validations   | list of validations (ex: min, max, required, email etc.)  |
+
+
 Licence
 -------
 The MIT License (MIT)

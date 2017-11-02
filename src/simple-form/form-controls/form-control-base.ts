@@ -6,7 +6,7 @@ export class FormControlBase<T>{
   id: string;
   label: string;
   order: number;
-  controlType: FormControlTypes;
+  tag: FormControlTypes;
   validations: object;
 
   constructor(options: {
@@ -14,14 +14,14 @@ export class FormControlBase<T>{
       id?: string,
       label?: string,
       order?: number,
-      controlType?: FormControlTypes,
+      tag?: FormControlTypes,
       validations?: object;
     } = {}) {
     this.value = options.value;
     this.id = options.id || '';
     this.label = options.label || '';
     this.order = options.order === undefined ? 1 : options.order;
-    this.controlType = options.controlType || FormControlTypes.Input;
+    this.tag = options.tag || FormControlTypes.Input;
     this.validations = options.validations || null;
   }
 }
