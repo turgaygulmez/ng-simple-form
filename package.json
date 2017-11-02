@@ -1,7 +1,10 @@
 {
-  "name": "my-app",
-  "version": "0.0.0",
+  "name": "ng-simple-form",
+  "version": "1.0.0",
   "license": "MIT",
+  "description": "ng-simple-form is a module to create dynamic form with an easy steps",
+  "author": "Turgay Gulmez (https://github.com/turgaygulmez)",
+  "homepage": "https://github.com/turgaygulmez/ng-simple-form",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
