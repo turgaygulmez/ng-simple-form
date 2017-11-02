@@ -8,10 +8,10 @@ export class FormService {
     return {
       title: 'My simple form',
       submitText: 'Save',
-      submit: function (value) {
-        console.log('callback from app component ' + JSON.stringify(value));
+      submit: function (form) {
+        console.log('callback from app component ' + JSON.stringify(form.value));
       },
-      inputs: [
+      controls: [
        {
         tag: 'dropdown',
         id: 'departments',
@@ -25,18 +25,24 @@ export class FormService {
         order: 3
       },
       {
-        tag: 'textbox',
+        tag: 'input',
         id: 'firstName',
         label: 'First name',
         value: 'David',
         order: 1
       },
       {
-        tag: 'textbox',
+        tag: 'textarea',
+        id: 'comment',
+        label: 'Your comment',
+        order: 2
+      },
+      {
+        tag: 'input',
         id: 'emailAddress',
         label: 'Email',
         type: 'email',
-        order: 7,
+        order: 4,
         validations: {
           required: {
             message: 'must be filled',

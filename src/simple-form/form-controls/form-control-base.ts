@@ -1,13 +1,12 @@
-import { InputTypes } from '../inputs/input-types';
+import { FormControlTypes } from '../form-controls/form-control-types';
 import { ValidatorFn } from '@angular/forms';
 
-export class InputBase<T>{
+export class FormControlBase<T>{
   value: T;
   id: string;
   label: string;
-  required: boolean;
   order: number;
-  controlType: InputTypes;
+  controlType: FormControlTypes;
   validations: object;
 
   constructor(options: {
@@ -15,14 +14,14 @@ export class InputBase<T>{
       id?: string,
       label?: string,
       order?: number,
-      controlType?: InputTypes,
+      controlType?: FormControlTypes,
       validations?: object;
     } = {}) {
     this.value = options.value;
     this.id = options.id || '';
     this.label = options.label || '';
     this.order = options.order === undefined ? 1 : options.order;
-    this.controlType = options.controlType || InputTypes.Textbox;
+    this.controlType = options.controlType || FormControlTypes.Input;
     this.validations = options.validations || null;
   }
 }

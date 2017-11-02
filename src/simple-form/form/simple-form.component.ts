@@ -1,6 +1,6 @@
 import { Component, Input, OnInit }  from '@angular/core';
 import { FormGroup }                 from '@angular/forms';
-import { FormBase }                  from '../inputs/form-base';
+import { FormBase }                  from '../form-controls/form-base';
 import { FormDataService }           from '../services/form-data.service';
 
 @Component({
@@ -20,10 +20,10 @@ export class SimpleFormComponent implements OnInit {
 
   ngOnInit() {
     this.formBase = this.fds.toFormBase(this.metadata);
-    this.form = this.fds.toFormGroup(this.formBase.inputs);
+    this.form = this.fds.toFormGroup(this.formBase.controls);
   }
 
   onSubmit() {
-    this.formBase.submit(this.form.value);
+    this.formBase.submit(this.form);
   }
 }

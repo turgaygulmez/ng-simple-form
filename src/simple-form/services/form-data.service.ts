@@ -1,29 +1,30 @@
 import { Injectable }                          from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import { InputBase }                           from '../inputs/input-base';
-import { FormBase }                            from '../inputs/form-base';
-import { InputDropdown }                       from '../inputs/input-dropdown';
-import { InputTextbox }                        from '../inputs/input-textbox';
-import { InputTypes }                          from '../inputs/input-types';
+import { FormControlBase }                     from '../form-controls/form-control-base';
+import { FormBase }                            from '../form-controls/form-base';
+import { FormControlDropdown }                 from '../form-controls/form-control-dropdown';
+import { FormControlInput }                  from '../form-controls/form-control-input';
+import { FormControlTextarea }                 from '../form-controls/form-control-textarea';
+import { FormControlTypes }                    from '../form-controls/form-control-types';
 
 @Injectable()
 export class FormDataService {
 
-  toFormGroup(inputs: InputBase<any>[] ) {
+  toFormGroup(controls: FormControlBase<any>[] ) {
     let group: any = {};
     let validationArray: ValidatorFn[] = [];
     // extend FormControl with validations property to access custom validation messages
     FormControl.prototype['validations'] = null;
 
-    inputs.forEach(input => {
-      if (input.validations !== null) {
-        Object.keys(input.validations).forEach(validation => {
-          validationArray.push(input.validations[validation].validate);
+    controls.forEach(control => {
+      if (control.validations !== null) {
+        Object.keys(control.validations).forEach(validation => {
+          validationArray.push(control.validations[validation].validate);
         });
-        group[input.id] = new FormControl(input.value || '', validationArray);
-        group[input.id].validations = input.validations;
+        group[control.id] = new FormControl(control.value || '', validationArray);
+        group[control.id].validations = control.validations;
       } else {
-        group[input.id] = new FormControl(input.value || '');
+        group[control.id] = new FormControl(control.value || '');
       }
     });
 
@@ -31,23 +32,25 @@ export class FormDataService {
   }
 
   toFormBase(metadata: any) {
-    let mappedInputs: InputBase<any>[] = [];
+    let mappedControls: FormControlBase<any>[] = [];
 
-    for(let k = 0; k < metadata.inputs.length; k++) {
-      mappedInputs.push(this.getInput(metadata.inputs[k]));
+    for(let k = 0; k < metadata.controls.length; k++) {
+      mappedControls.push(this.getControl(metadata.controls[k]));
     }
 
-    metadata.inputs = mappedInputs.sort((a, b) => a.order - b.order);
+    metadata.controls = mappedControls.sort((a, b) => a.order - b.order);
 
     return new FormBase(metadata);
   }
 
-  private getInput (input: any) {
-      switch (input.tag) {
-        case InputTypes.Dropdown:
-          return new InputDropdown(input);
-        case InputTypes.Textbox:
-          return new InputTextbox(input);
+  private getControl (control: any) {
+      switch (control.tag) {
+        case FormControlTypes.Dropdown:
+          return new FormControlDropdown(control);
+        case FormControlTypes.Input:
+          return new FormControlInput(control);
+        case FormControlTypes.Textarea:
+          return new FormControlTextarea(control);
       }
   }
 }

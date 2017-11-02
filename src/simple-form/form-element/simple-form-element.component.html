@@ -1,0 +1,23 @@
+<div class="form-group" [formGroup]="form" [ngClass]="{'invalid': !isValid}">
+	<label [attr.for]="control.id">{{control.label}}</label>
+
+	<div [ngSwitch]="control.controlType">
+        <div *ngSwitchCase="'input'">
+    		<input class="form-control"  [formControlName]="control.id"
+    			[id]="control.id" [type]="control.type" />
+        </div>
+
+        <div *ngSwitchCase="'dropdown'">
+            <select class="form-control" [id]="control.id"  [formControlName]="control.id">
+                <option *ngFor="let opt of control.options" [value]="opt.id">{{opt.value}}</option>
+            </select>
+        </div>
+
+        <div *ngSwitchCase="'textarea'">
+            <textarea class="form-control" [formControlName]="control.id"
+                [id]="control.id" [rows]="control.rows"></textarea>
+        </div>
+	</div>
+
+	<div class="alert alert-danger" [@fadeInOut] *ngIf="!isValid">{{control.label}} {{errorMessage}}</div>
+</div>

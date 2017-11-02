@@ -1,19 +1,19 @@
-import { InputBase } from '../inputs/input-base';
+import { FormControlBase } from '../form-controls/form-control-base';
 
 export class FormBase {
   title: string;
-  inputs: InputBase<any>[];
+  controls: FormControlBase<any>[];
   submitText: string;
   submit: Function;
 
   constructor(options: {
       title: string,
-      inputs: InputBase<any>[],
+      controls: FormControlBase<any>[],
       submitText: string,
       submit: Function
     }) {
         this.title = options.title || '';
-        this.inputs = options.inputs || [];
+        this.controls = options.controls || [];
         this.submitText = options.submitText || '';
         this.submit = options.submit || function () {
             console.error('no submit callback defined');

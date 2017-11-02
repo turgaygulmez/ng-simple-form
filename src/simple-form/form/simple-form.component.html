@@ -2,8 +2,8 @@
   <h2>{{formBase.title}}</h2>
   <form (ngSubmit)="onSubmit()" [formGroup]="form" >
 
-    <div *ngFor="let input of formBase.inputs">
-      <df-input [input]="input" [form]="form"></df-input>
+    <div *ngFor="let control of formBase.controls">
+      <df-input [control]="control" [form]="form"></df-input>
     </div>
 
     <button class="btn btn-success" type="submit" [disabled]="!form.valid">Save</button>
