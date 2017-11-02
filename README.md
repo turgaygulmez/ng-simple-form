@@ -68,7 +68,7 @@ Module meta-data
 ```
 | Property                  | Description                                               |
 | --------------------------| ----------------------------------------------------------|
-| title                     | Title of the form with <h2> tag                           |
+| title                     | Title of the form with h2 tag                           |
 | submitText                | submit button text                                        |
 | submit                    | submit callback function                                  |
 | controls                  | list of controller will be shown in the form              |
