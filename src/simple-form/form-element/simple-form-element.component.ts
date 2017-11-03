@@ -26,7 +26,7 @@ import {
   ]
 })
 
-export class SimpleFormInputComponent {
+export class SimpleFormElementComponent {
   @Input() control: FormControlBase<any>;
   @Input() form: FormGroup;
   errorMessage:string = '';
